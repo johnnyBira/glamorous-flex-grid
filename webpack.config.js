@@ -3,19 +3,13 @@ const merge = require('webpack-merge');
 const path = require('path');
 const commonConfig = require('./webpack.config.common');
 
-const hotMiddlewareScript = 'webpack-hot-middleware/client?name=bundle';
-
-
 const PATHS = {
   app: path.join(__dirname, 'src', 'index.jsx'),
-  build: path.join(__dirname, 'public', 'assets', 'scripts'),
+  build: path.join(__dirname, 'dist'),
 };
 
 const config = {
-  entry: {
-    // Add the client which connects to our middleware
-    client: ['babel-polyfill', PATHS.app, hotMiddlewareScript],
-  },
+  entry: ['babel-polyfill', PATHS.app],
   output: {
     path: PATHS.build,
     filename: 'bundle.js',
