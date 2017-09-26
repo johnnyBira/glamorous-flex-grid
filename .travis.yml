@@ -4,6 +4,8 @@ cache:
     - node_modules
 notifications:
   email: false
+before_install: if [[ `npm -v` != 5.4* ]]; then npm i -g npm@3; fi
+
 node_js:
   - '8'
 before_script:
