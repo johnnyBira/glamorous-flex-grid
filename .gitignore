@@ -1,0 +1,8 @@
+# Ignore node modules
+node_modules
+
+# Ignore OSX file system files
+.DS_Store
+
+# Ignore build files
+dist
