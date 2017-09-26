@@ -8,7 +8,7 @@ const hotMiddlewareScript = 'webpack-hot-middleware/client?name=bundle';
 
 const PATHS = {
   app: path.join(__dirname, 'src', 'index.jsx'),
-  build: path.join(__dirname, 'dist'),
+  build: path.join(__dirname, 'public', 'assets', 'scripts'),
 };
 
 const config = {
