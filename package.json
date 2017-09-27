@@ -6,6 +6,7 @@
   "scripts": {
     "commitmsg": "validate-commit-msg",
     "cz-commit": "git-cz",
+    "report-coverage": "cat ./coverage/lcov.info | codecov",
     "setup": "npm-run-all setup:*",
     "prebuild": "rimraf dist",
     "build": "npm-run-all --parallel build:*",
@@ -46,6 +47,7 @@
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "codecov": "^2.3.0",
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.0.0",
     "eslint-config-airbnb": "^15.1.0",
@@ -76,8 +78,11 @@
     }
   },
   "jest": {
-   "collectCoverage": true,
-   "coverageFormats": ["json", "html"]
+    "collectCoverage": true,
+    "coverageFormats": [
+      "json",
+      "html"
+    ]
   },
   "dependencies": {
     "deepmerge": "^1.5.2",
