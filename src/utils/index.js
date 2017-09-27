@@ -1,10 +1,24 @@
 // @flow
+
+type Breakpoints = {
+  [string]: number,
+};
+
+type GridConfig = {
+  rowWidth: number,
+  gutterWidth: number,
+  columnCount: number,
+  breakpoints: {
+    [string]: number,
+  },
+}
+
 export const getColumnWidth =
 (columnCount: number, rowWidth: number, size: number, fixed: boolean = false) => (
   fixed ? (size / columnCount) * rowWidth : `${(size / columnCount) * 100}%`
 );
 
-export const breakpoint = (width: number, mobileFirst = true) => (content: Object) => ({
+export const breakpoint = (width: number, mobileFirst: boolean = true) => (content: Object) => ({
   [`@media only screen and (${mobileFirst ? 'min' : 'max'}-width: ${width}px)`]: {
     ...content,
   },
@@ -17,19 +31,14 @@ export const getBreakpoints =
   ), {})
 );
 
-type GridConfig = {
-  rowWidth: number,
-  gutterWidth: number,
-  columnCount: number,
-  breakpoints: {
-    [string]: number,
-  },
-}
-
 export const configGrid = (config: GridConfig) => (
   {
-    getBreakpoints: (sizes, callback) => getBreakpoints(config.breakpoints, sizes, callback),
-    getColumnWidth: size => getColumnWidth(config.columnCount, config.rowWidth, size),
+    getBreakpoints: (sizes: Breakpoints, callback: () => {}) => (
+      getBreakpoints(config.breakpoints, sizes, callback)
+    ),
+    getColumnWidth: (size: number) => (
+      getColumnWidth(config.columnCount, config.rowWidth, size)
+    ),
     config,
   }
 );
