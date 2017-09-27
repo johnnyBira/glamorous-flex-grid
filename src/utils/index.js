@@ -14,8 +14,8 @@ type GridConfig = {
 }
 
 export const getColumnWidth =
-(columnCount: number, rowWidth: number, size: number, fixed: boolean = false) => (
-  fixed ? (size / columnCount) * rowWidth : `${(size / columnCount) * 100}%`
+(columnCount: number, rowWidth: number, size: number, fixed: boolean = false): string => (
+  fixed ? String((size / columnCount) * rowWidth) : `${(size / columnCount) * 100}%`
 );
 
 export const breakpoint = (width: number, mobileFirst: boolean = true) => (content: Object) => ({
@@ -25,7 +25,7 @@ export const breakpoint = (width: number, mobileFirst: boolean = true) => (conte
 });
 
 export const getBreakpoints =
-(breakpoints: Breakpoints, sizes: Breakpoints, fn: (number) => {}) => (
+(breakpoints: Breakpoints, sizes: Breakpoints, fn: Function) => (
   Object.keys(sizes).reduce((acc, size) => (
     Object.assign({}, acc, breakpoint(breakpoints[size])(fn(sizes[size])))
   ), {})
@@ -33,7 +33,7 @@ export const getBreakpoints =
 
 export const configGrid = (config: GridConfig) => (
   {
-    getBreakpoints: (sizes: Breakpoints, callback: () => {}) => (
+    getBreakpoints: (sizes: Breakpoints, callback: Function) => (
       getBreakpoints(config.breakpoints, sizes, callback)
     ),
     getColumnWidth: (size: number) => (
