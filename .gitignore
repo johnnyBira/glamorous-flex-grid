@@ -1,4 +1,4 @@
-# Ignore node modules
+webpack.config.js# Ignore node modules
 node_modules
 
 # Ignore OSX file system files
@@ -6,3 +6,7 @@ node_modules
 
 # Ignore build files
 dist
+
+# Ignore all types installed by flow-typed but keep the custom definitions
+**/flow-typed/*
+!**/flow-typed/custom-definitions

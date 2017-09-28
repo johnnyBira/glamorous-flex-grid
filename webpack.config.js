@@ -19,6 +19,8 @@ const config = {
     extensions: ['.js', '.jsx', '.json', '.scss'],
     modules: [
       path.resolve(__dirname, 'src'),
+      path.resolve(__dirname, 'flow-typed'),
+      path.resolve(__dirname, 'flow-typed/custom-definitions'),
       'node_modules',
     ],
   },
