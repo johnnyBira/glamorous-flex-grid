@@ -10,3 +10,6 @@ dist
 # Ignore all types installed by flow-typed but keep the custom definitions
 **/flow-typed/*
 !**/flow-typed/custom-definitions
+
+# Ignore test coverage folder
+coverage
